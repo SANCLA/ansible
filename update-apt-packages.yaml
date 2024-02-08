@@ -1,6 +1,6 @@
 ---
 - hosts: all
-
+  serial: 1
   become: true
   tasks:
     - name: update apt packages
@@ -10,3 +10,6 @@
     - name: Reboot a slow machine that might have lots of updates to apply
       ansible.builtin.reboot:
         reboot_timeout: 3600
+    - name: pause for 30 seconds
+      pause:
+        seconds: 600
